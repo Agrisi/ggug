@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de Cores Aleatórias</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #cor-aleatoria {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+
+        #gerar-cor-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #337ab7;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Cores Aleatórias</h1>
+
+    <button id="gerar-cor-btn" onclick="gerarCorAleatoria()">Gerar Cor Aleatória</button>
+
+    <div id="cor-aleatoria"></div>
+
+    <script>
+        function gerarCorAleatoria() {
+            var red = Math.round(Math.random() * 255);
+            var green = Math.round(Math.random() * 255);
+            var blue = Math.round(Math.random() * 255);
+    
+            var corHexadecimal = '#' + componentToHex(red) + componentToHex(green) + componentToHex(blue);
+    
+            document.body.style.backgroundColor = corHexadecimal;
+    
+            document.getElementById('cor-aleatoria').textContent = 'Cor Aleatória: ' + corHexadecimal;
+        }
+    
+        function componentToHex(componente) {
+            var hex = componente.toString(16);
+            return hex.length === 1 ? '0' + hex : hex;
+        }
+    </script>
+</body>
+</html>

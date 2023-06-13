@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificador de Anagramas</title>
+    <style>
+        /* Estilos CSS para o formulário */
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Anagramas</h1>
+    <form>
+        <label for="palavra1">Palavra 1:</label>
+        <input type="text" id="palavra1" required>
+
+        <label for="palavra2">Palavra 2:</label>
+        <input type="text" id="palavra2" required>
+
+        <button type="button" onclick="verificarAnagrama()">Verificar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function verificarAnagrama() {
+            var palavra1 = document.getElementById("palavra1").value.toLowerCase().replace(/\s/g, "");
+            var palavra2 = document.getElementById("palavra2").value.toLowerCase().replace(/\s/g, "");
+
+            if (palavra1.length !== palavra2.length) {
+                document.getElementById("resultado").innerHTML = "As palavras não são anagramas.";
+                return;
+            }
+
+            var letras1 = palavra1.split("").sort().join("");
+            var letras2 = palavra2.split("").sort().join("");
+
+            if (letras1 === letras2) {
+                document.getElementById("resultado").innerHTML = "As palavras são anagramas!";
+            } else {
+                document.getElementById("resultado").innerHTML = "As palavras não são anagramas.";
+            }
+            
+            if (palavra1 === palavra2) {
+                document.getElementById("resultado").innerHTML += "<br>Ambas as palavras são idênticas.";
+            }
+        }
+    </script>
+</body>
